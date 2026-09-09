@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: spring-petclinic
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-petclinic
+  namespace: spring-petclinic
+  labels:
+    app: spring-petclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-petclinic
+  template:
+    metadata:
+      labels:
+        app: spring-petclinic
+    spec:
+      containers:
+        - name: petclinic
+          image: mockuser/spring-petclinic:sha-initial # CI updates this tag dynamically
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-petclinic-service
+  namespace: spring-petclinic
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
+  selector:
+    app: spring-petclinic
