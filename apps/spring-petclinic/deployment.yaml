@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: petclinic
-          image: mockuser/spring-petclinic:sha-initial # CI updates this tag dynamically
+          image: springcommunity/spring-petclinic:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
