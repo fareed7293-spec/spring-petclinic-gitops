@@ -41,7 +41,7 @@ metadata:
   name: spring-petclinic-service
   namespace: spring-petclinic
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8080
       targetPort: 8080
