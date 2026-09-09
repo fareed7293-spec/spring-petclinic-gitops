@@ -19,7 +19,8 @@ spec:
     metadata:
       labels:
         app: spring-petclinic
-    imagePullSecrets:
+    spec:
+      imagePullSecrets:
         - name: ghcr-secret
       containers:
         - name: petclinic
