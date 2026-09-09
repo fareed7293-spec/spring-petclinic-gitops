@@ -19,10 +19,12 @@ spec:
     metadata:
       labels:
         app: spring-petclinic
-    spec:
+    imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: petclinic
           image: ghcr.io/fareed7293-spec/spring-petclinic:sha-4062a130dc08e1169b112f25c7597992c40fb426
+      #    image: ghcr.io/fareed7293-spec/spring-petclinic:sha-latest # Updated by Stage 7
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
