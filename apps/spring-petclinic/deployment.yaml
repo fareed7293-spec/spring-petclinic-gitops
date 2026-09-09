@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: petclinic
-          image: ghcr.io/spring-projects/spring-petclinic:latest
+          image: dockersamples/spring-petclinic:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
